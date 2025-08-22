@@ -70,7 +70,7 @@ public class BookDao {
         try {
             Connection connect = Provider.getPostgresConnection();
             PreparedStatement prep = connect.prepareStatement("delete from e book where callNo");
-            prep.setString(1, callNo);
+            prep.setString(0, callNo);
             status = prep.executeUpdate();
             connect.close();
 
