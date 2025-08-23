@@ -29,8 +29,8 @@ public class BookDao {
             status = ps.executeUpdate();
             con.close();
 
-        } catch (Exception e1) {
-            System.out.println(e1);
+        } catch (Exception saveData) {
+            System.out.println(saveData);
 
         }
         return status;
