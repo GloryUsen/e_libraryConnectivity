@@ -2,7 +2,7 @@ package com.glory.elibraryapp.beans;
 
 public class BookBean {
 
-    private String callno;
+    private String callNo;
     private String name;
     private String author;
     private String publish;
@@ -13,8 +13,8 @@ public class BookBean {
         super();
     }
 
-    public BookBean(String callno, String name, String author, String publish, int quantity, int issued) {
-        this.callno = callno;
+    public BookBean(String callNo, String name, String author, String publish, int quantity, int issued) {
+        this.callNo = callNo;
         this.name = name;
         this.author = author;
         this.publish = publish;
@@ -22,12 +22,12 @@ public class BookBean {
         this.issued = issued;
     }
 
-    public String getCallno() {
-        return callno;
+    public String getCallNo() {
+        return callNo;
     }
 
-    public void setCallno(String callno) {
-        this.callno = callno;
+    public void setCallNo(String callNo) {
+        this.callNo = callNo;
     }
 
     public String getName() {

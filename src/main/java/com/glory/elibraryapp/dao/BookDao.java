@@ -19,7 +19,7 @@ public class BookDao {
             Class.forName("org.postgresql.Driver");
             Connection con = Provider.getPostgresConnection();
             PreparedStatement ps = con.prepareStatement("insert into E book values(?,?,?,?,?,?)");
-            ps.setString(1, beans.getCallno());
+            ps.setString(1, beans.getCallNo());
             ps.setString(2, beans.getAuthor());
             ps.setString(3, beans.getName());
             ps.setString(4, beans.getPublish());
@@ -46,7 +46,7 @@ public class BookDao {
 
             while (set.next()){
                 BookBean bean = new BookBean();
-                bean.setCallno(set.getString("callNo"));
+                bean.setCallNo(set.getString("callNo"));
                 bean.setName(set.getString("name"));
                 bean.setAuthor(set.getString("author"));
                 bean.setPublish(set.getString("publish"));
@@ -69,8 +69,8 @@ public class BookDao {
         int status = 0;
         try {
             Connection connect = Provider.getPostgresConnection();
-            PreparedStatement prep = connect.prepareStatement("delete from e book where callNo");
-            prep.setString(0, callNo);
+            PreparedStatement prep = connect.prepareStatement("delete from ebook where callNo=?");
+            prep.setString(1, callNo);
             status = prep.executeUpdate();
             connect.close();
 
@@ -85,7 +85,7 @@ public class BookDao {
         int issued = 0;
         try {
             Connection comic = Provider.getPostgresConnection();
-            PreparedStatement peer = comic.prepareStatement("select * from E book where callNo = ?");
+            PreparedStatement peer = comic.prepareStatement("select * from ebook where callNo = ?");
             peer.setString(1, callNo);
             ResultSet resting = peer.executeQuery();
             if (resting.next()){
@@ -106,7 +106,7 @@ public class BookDao {
         boolean status2 = false;
         try {
             Connection connection = Provider.getPostgresConnection();
-            PreparedStatement steps = connection.prepareStatement("select * from E book where callNo=?" +
+            PreparedStatement steps = connection.prepareStatement("select * from ebook where callNo=?" +
                     "and quantity>issued");
             steps.setString(1, callNo);
             ResultSet set = steps.executeQuery();
@@ -130,18 +130,18 @@ public class BookDao {
             int status3 = 0;
             try {
                 Connection con = Provider.getPostgresConnection();
-                PreparedStatement prepare = con.prepareStatement("insert into E issuebook values(?,?,?,?,?,?)");
+                PreparedStatement prepare = con.prepareStatement("insert into eissuebook values(?,?,?,?,?,?)");
                 prepare.setString(1, issue.getCallNo());
                 prepare.setString(2, issue.getStudentId());
                 prepare.setString(3, issue.getStudentName());
                 prepare.setLong(4, issue.getStudentMobile());
-                prepare.setString(6, "no");
+                prepare.setString(5, "no");
                 java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
-                prepare.setDate(7, currentDate);
+                prepare.setDate(6, currentDate);
 
                 status3 = prepare.executeUpdate();
                 if (status3 > 0);
-                PreparedStatement prepare2 = con.prepareStatement("update  E book set issued = ? where callNo=?");
+                PreparedStatement prepare2 = con.prepareStatement("update  ebook set issued = ? where callNo=?");
                 prepare2.setInt(1, getIssued(callNo) +1);
                 prepare2.setString(2, callNo);
                 status3 = prepare2.executeUpdate();
@@ -160,7 +160,7 @@ public class BookDao {
         int status4 = 0;
         try {
             Connection connecting = Provider.getPostgresConnection();
-            PreparedStatement prep = connecting.prepareStatement("update E issuebook set returnstatus='Yes' where callNo=? and studentId=?");
+            PreparedStatement prep = connecting.prepareStatement("update eissuebook set returnstatus='Yes' where callNo=? and studentId=?");
             prep.setString(1, callNo);
             prep.setInt(2, studentId);
 
@@ -181,7 +181,7 @@ public class BookDao {
 
         try {
             Connection con = Provider.getPostgresConnection();
-            PreparedStatement stage = con.prepareStatement("select * from E issuebook order by issuedDate desc ");
+            PreparedStatement stage = con.prepareStatement("select * from eissuebook order by issuedDate desc ");
             ResultSet rs = stage.executeQuery();
             while (rs.next()){
                 IssueBookBean bean = new IssueBookBean();
