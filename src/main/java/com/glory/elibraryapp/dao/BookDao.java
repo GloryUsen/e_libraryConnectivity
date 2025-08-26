@@ -17,6 +17,8 @@ public class BookDao {
         int status = 0;
         try {
             Class.forName("org.postgresql.Driver");
+
+
             Connection con = Provider.getPostgresConnection();
             PreparedStatement ps = con.prepareStatement("insert into E book values(?,?,?,?,?,?)");
             ps.setString(1, beans.getCallNo());
@@ -140,17 +142,19 @@ public class BookDao {
                 prepare.setDate(6, currentDate);
 
                 status3 = prepare.executeUpdate();
-                if (status3 > 0);
-                PreparedStatement prepare2 = con.prepareStatement("update  ebook set issued = ? where callNo=?");
-                prepare2.setInt(1, getIssued(callNo) +1);
-                prepare2.setString(2, callNo);
-                status3 = prepare2.executeUpdate();
+                if (status3 > 0) {
+                    PreparedStatement prepare2 = con.prepareStatement("update  ebook set issued = ? where callNo=?");
+                    prepare2.setInt(1, getIssued(callNo) + 1);
+                    prepare2.setString(2, callNo);
+                    status3 = prepare2.executeUpdate();
+                }
 
-                con.close();
-            } catch (Exception e) {
-                System.out.println(e);
+                    con.close();
+                } catch(Exception e){
+                    System.out.println(e);
 
-            }
+                }
+
         }
 
         return 0;

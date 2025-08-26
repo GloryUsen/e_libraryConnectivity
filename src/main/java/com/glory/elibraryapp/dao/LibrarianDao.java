@@ -5,12 +5,11 @@ import com.glory.elibraryapp.beans.LibrarianBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LibrarianDao {
-    public static int save(LibrarianBean beans){
+    public static void save(LibrarianBean beans){
         int status = 0;
         try {
             Connection con = Provider.getPostgresConnection();
@@ -30,7 +29,6 @@ public class LibrarianDao {
 
         }
 
-        return status;
     }
 
     public static int update(LibrarianBean beans){
