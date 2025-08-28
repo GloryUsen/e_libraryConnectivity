@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/servlet.DeleteBook")
+@WebServlet("/servlet.AddLibrarianForm")
 public class AddLibrarianForm extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         response.setContentType("text/html");

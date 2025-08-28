@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/servlet.DeleteBook")
+@WebServlet("/servlet.AddBookForm")
 
 public class AddBookForm extends HttpServlet{
 

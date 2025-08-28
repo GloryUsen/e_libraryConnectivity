@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 
-@WebServlet("/servlet.DeleteBook")
+@WebServlet("/servlet.ViewIssuedBook")
 
 public class ViewIssuedBook extends HttpServlet {
 

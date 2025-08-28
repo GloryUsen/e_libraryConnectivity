@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/servlet.DeleteBook")
+@WebServlet("/servlet.AdminLogin")
 public class AdminLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         response.setContentType("text/html");

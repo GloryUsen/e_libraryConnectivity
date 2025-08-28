@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/servlet.DeleteBook")
+@WebServlet("/servlet.EditLibrarianForm")
 
 public class EditLibrarianForm extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response )throws ServletException, IOException{
